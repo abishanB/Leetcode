@@ -18,7 +18,7 @@ class Solution:
     res = []
     backtrack(0, [])
     nums.sort()
-    return
+    return res
 
 
 Solution = Solution()

@@ -9,20 +9,17 @@ class Solution:
     def dfs(i, curr, total):
       if total == target:
         res.append(curr[:])
-
         return
+
       if i >= len(candidates) or total > target:
         return
 
       curr.append(candidates[i])
       dfs(i + 1, curr, total + candidates[i])
       curr.pop()
-
       i += 1
-
       while i < len(candidates) and candidates[i] == candidates[i - 1]:
         i += 1
-
       dfs(i, curr, total)
 
     dfs(0, [], 0)
