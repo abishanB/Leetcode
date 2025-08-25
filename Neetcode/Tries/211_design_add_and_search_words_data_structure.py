@@ -8,7 +8,7 @@ class WordDictionary:
   def __init__(self):
     self.root = TrieNode()
 
-  def insert(self, word: str) -> None:
+  def addWord(self, word: str) -> None:
     curr = self.root
     for c in word:
       if c not in curr.children:
@@ -18,21 +18,22 @@ class WordDictionary:
     curr.endOfWord = True
 
   def search(self, word: str) -> bool:
-    curr = self.root
 
-    for c in word:
-      if c not in curr.children:
-        return False
-      curr = curr.children[c]
+    def dfs(j, root):
+      curr = root
 
-    return curr.endOfWord
+      for i in range(j, len(word)):
+        c = word[i]
+        if c == ".":
+          for child in curr.children.values():
+            if dfs(i + 1, child):
+              return True
 
-  def startsWith(self, prefix: str) -> bool:
-    curr = self.root
+          return False
+        else:
+          if c not in curr.children:
+            return False
+          curr = curr.children[c]
+      return curr.endOfWord
 
-    for c in prefix:
-      if c not in curr.children:
-        return False
-      curr = curr.children[c]
-
-    return True
+    return dfs(0, self.root)
