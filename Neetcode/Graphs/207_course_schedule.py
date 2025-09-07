@@ -13,7 +13,7 @@ class Solution:
     def dfs(course):
       if course in visited:
         return False
-      if preMap(course) == []:
+      if preMap[course] == []:
         return True
 
       visited.add(course)
