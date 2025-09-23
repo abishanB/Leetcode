@@ -2,8 +2,7 @@ from typing import List
 
 
 class Solution:
-  def generateParenthesis(self, n: int) -> List[str]:
-
+  def generateParenthesis(self, n: int) -> List[str]:  # my solution
     res = []
     s = ""
 
@@ -15,14 +14,9 @@ class Solution:
         dfs(s + "(", ["("], pairs)
         return
       if len(stack) + pairs < n:
-
         dfs(s + "(", stack + ["("], pairs)
       stack.pop()
       dfs(s + ")", stack, pairs + 1)
 
     dfs(s, [], 0)
     return res
-
-
-Solution = Solution()
-print(Solution.generateParenthesis(3))
