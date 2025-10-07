@@ -2,12 +2,7 @@ class Solution:
   def checkValidString(self, s: str) -> bool:
 
     def dfs(open1, open2, open3, i):
-      if open1 < 0:
-        open1 = -1000
-      if open2 < 0:
-        open2 = -1000
-      if open3 < 0:
-        open3 = -1000
+
       if open1 < 0 and open2 < 0 and open3 < 0:
         return False
       if i == len(s):
